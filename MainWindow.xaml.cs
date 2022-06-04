@@ -55,7 +55,7 @@ namespace customs
             string fileName = @"C:\Python27\example\hello_world.py";
 
             Process p = new Process();
-            p.StartInfo = new ProcessStartInfo(@"C:\Python27\python.exe", fileName)
+            p.StartInfo = new ProcessStartInfo("python", fileName)
             {
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
