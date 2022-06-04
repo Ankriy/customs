@@ -67,7 +67,7 @@
                      Text="Пароль"
                      Style="{StaticResource ModernTextBox}"/>
 
-            <Button Content="Подтвердить" Height="25" Width="200" Margin="1" />
+            <Button Content="Подтвердить" Height="25" Width="200" Margin="1" Click="Button_Click" />
         </StackPanel>
     </StackPanel>
 </Window>
