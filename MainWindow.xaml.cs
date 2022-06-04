@@ -53,9 +53,8 @@ namespace customs
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string fileName = @"C:\Users\user\Downloads\искусственный_интеллект_проводит_таможенный_контроль\predict.py" + " " + SearchBox.Text;
+            string fileName = @"cliet.py" + " " + SearchBox.Text;
 
-            MessageBox.Show(SearchBox.Text);
             Process p = new Process();
             p.StartInfo = new ProcessStartInfo("python", fileName)
             {
@@ -69,18 +68,6 @@ namespace customs
             p.WaitForExit();
 
             MessageBox.Show(output);
-            
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            MessageBox.Show("Текст изменён на: " + SearchBox.Text);
-            
         }
     }
 }
