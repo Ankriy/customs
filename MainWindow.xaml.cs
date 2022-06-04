@@ -71,5 +71,9 @@ namespace customs
             Console.ReadLine();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
