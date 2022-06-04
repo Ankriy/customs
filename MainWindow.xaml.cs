@@ -54,9 +54,9 @@ namespace customs
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            string fileName = @"C:\Users\user\Downloads\искусственный_интеллект_проводит_таможенный_контроль\predict.py" + " " + tb_text.Text;
+            string fileName = @"C:\Users\user\Downloads\искусственный_интеллект_проводит_таможенный_контроль\predict.py" + " " + SearchBox.Text;
 
-            MessageBox.Show(tb_text.Text);
+            MessageBox.Show(SearchBox.Text);
             Process p = new Process();
             p.StartInfo = new ProcessStartInfo("python", fileName)
             {
