@@ -7,7 +7,7 @@
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Grid>
                         <Border x:Name="TextBoxBorder"
-                                    Background="#FFFAFAFA" 
+                                    Background="#D9D9D9" 
                                     BorderBrush="#FF8C8C8C" 
                                     BorderThickness="1" 
                                     CornerRadius="3" Opacity="1">
