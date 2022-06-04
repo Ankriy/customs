@@ -19,28 +19,9 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <StackPanel Orientation="Horizontal" MouseDown="ToolBar_MouseDown" HorizontalAlignment="Stretch">
-                <!--<Image Source="Images/Таможня.jpg" Stretch="Fill" Height="17"/>-->
-                <TextBlock Foreground="White"  HorizontalAlignment="Stretch">Таможенный контроль</TextBlock>
 
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1" MouseDown="ToolBar_MouseDown">
-                <Image Name="MinButton2" Height="13" Width="13" Margin="5" MouseDown="MinButton_MouseDown">
-                    <Image.Style>
-                        <Style TargetType="{x:Type Image}">
-                            <Setter Property="Source" Value="Images/minimize.png"/>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding IsMouseOver, ElementName=MinButton2}" Value="True">
-                                    <Setter Property="Source" Value="Images/minimize2.png"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Image.Style>
-                    <Image.Effect>
-                        <BlurEffect Radius="1"/>
-                    </Image.Effect>
-                </Image>
-                <Image Name="MinButton" Height="13" Width="13" Margin="5" MouseDown="ExitButton_MouseDown">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Grid.ColumnSpan="2" MouseDown="ToolBar_MouseDown" Width="955" FlowDirection="RightToLeft">
+                <Image x:Name="MinButton" Height="30" Width="30" Margin="5" MouseDown="ExitButton_MouseDown">
                     <Image.Style>
                         <Style TargetType="{x:Type Image}">
                             <Setter Property="Source" Value="Images/close.png"/>
@@ -55,6 +36,22 @@
                         <BlurEffect Radius="1"/>
                     </Image.Effect>
                 </Image>
+                <Image Name="MinButton2" Height="30" Width="30" Margin="5" MouseDown="MinButton_MouseDown" >
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="Images/minimize.png"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsMouseOver, ElementName=MinButton2}" Value="True">
+                                    <Setter Property="Source" Value="Images/minimize2.png"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                    <Image.Effect>
+                        <BlurEffect Radius="1"/>
+                    </Image.Effect>
+                </Image>
+                <TextBlock HorizontalAlignment="Stretch" Text="⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                                                                                                                                                                                                                                  " />
             </StackPanel>
         </Grid>
 
@@ -66,7 +63,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" HorizontalAlignment="Center">
-                <Label Foreground="White">Идентификационные номера:</Label>
+                <Label Foreground="White" FontSize="16">Идентификационные номера:</Label>
                 <DataGrid x:Name="grid" Loaded="grid_Loaded" Width="901" Height="392">
                     
                 </DataGrid>
