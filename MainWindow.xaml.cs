@@ -50,10 +50,13 @@ namespace customs
                 this.DragMove();
             }
         }
-        private void ButtonCkick_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            string fileName = @"C:\Python27\example\hello_world.py";
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            string fileName = @"C:\Users\user\Downloads\искусственный_интеллект_проводит_таможенный_контроль\predict.py" + " " + tb_text.Text;
+
+            MessageBox.Show(tb_text.Text);
             Process p = new Process();
             p.StartInfo = new ProcessStartInfo("python", fileName)
             {
@@ -66,10 +69,8 @@ namespace customs
             string output = p.StandardOutput.ReadToEnd();
             p.WaitForExit();
 
-            Console.WriteLine(output);
+            MessageBox.Show(output);
 
-            Console.ReadLine();
         }
-
     }
 }
