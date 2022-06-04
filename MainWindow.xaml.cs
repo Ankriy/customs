@@ -108,7 +108,21 @@ namespace customs
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(StartClient(SearchBox.Text));
+            string fileName = @"cliet.py" + " " + SearchBox.Text;
+
+            Process p = new Process();
+            p.StartInfo = new ProcessStartInfo("python", fileName)
+            {
+                RedirectStandardOutput = true,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+            p.Start();
+
+            string output = p.StandardOutput.ReadToEnd();
+            p.WaitForExit();
+
+            MessageBox.Show(output);
         }
     }
 }
