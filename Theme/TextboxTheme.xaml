@@ -12,13 +12,24 @@
                         <Grid>
                             <Rectangle StrokeThickness="1"/>
                             <TextBox Margin="1"
-                                     Text="{TemplateBinding Text}"
+                                     Text="{TemplateBinding Text}" 
                                      BorderThickness="0"
                                      Background="Transparent"
                                      VerticalContentAlignment="Center"
                                      Padding="5"
                                      Foreground="#323232"
-                                     x:Name="SearchBox"/>
+                                     x:Name="SearchBox">
+                                <!--<TextBox.Style>
+                                    <Style TargetType="{x:Type TextBox}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ElementName=SearchBox, Path=Text}" Value="">
+                                                <Setter Property="Text" Value="{Binding ElementName=SearchBox, Path=Text}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Text" Value="{Binding ElementName=SearchBox, Path=Text}"/>
+                                    </Style>
+                                </TextBox.Style>-->
+                            </TextBox>
 
                             <TextBlock IsHitTestVisible="False"
                                        Text="{TemplateBinding Text}"
@@ -28,7 +39,8 @@
                                        FontSize="{TemplateBinding FontSize}"
                                        
                                        Foreground="DarkGray"
-                                       Grid.Column="1">
+                                       Grid.Column="1"
+                                       x:Name="txtbl">
 
                                 <TextBlock.Style>
                                     <Style TargetType="{x:Type TextBlock}">
@@ -40,11 +52,9 @@
                                         <Setter Property="Visibility" Value="Hidden"/>
                                     </Style>
                                 </TextBlock.Style>
+                                
                             </TextBlock>
-
-
                         </Grid>
-
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
