@@ -61,7 +61,7 @@
 
         <StackPanel Grid.Column="0" Margin="0 30 0 30" HorizontalAlignment="Center">
                 <TextBox Width="220"></TextBox>
-                <Button Grid.Column="1" Grid.Row="1" Content="Выполнить" Height="20" Width="70"/>
+                <Button Grid.Column="1" Grid.Row="1" Content="Выполнить" Height="20" Width="90"/>
             </StackPanel>
 
         <StackPanel Grid.Row="1" HorizontalAlignment="Center">
