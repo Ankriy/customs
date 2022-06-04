@@ -28,7 +28,7 @@ namespace customs
 
         private void grid_Loaded(object sender, RoutedEventArgs e)
         {
-            List<Tables> result = new List<Tables>(3);
+            List<Tables> result = new List<Tables>();
 
             result.Add(new Tables("0001", "Живая Лошадь", "97%"));
 
@@ -74,6 +74,12 @@ namespace customs
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            MessageBox.Show("Текст изменён на: " + SearchBox.Text);
             
         }
     }
