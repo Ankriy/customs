@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net;
+using System.Net.Sockets;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,24 +52,63 @@ namespace customs
                 this.DragMove();
             }
         }
+        public static string StartClient(string text)
+        {
+            byte[] bytes = new byte[1024];
+            string result = "";
+            try
+            {
+                IPHostEntry host = Dns.GetHostEntry("192.168.90.180");
+                IPAddress ipAddress = host.AddressList[0];
+                IPEndPoint remoteEP = new IPEndPoint(ipAddress, 5000);
+
+                // Create a TCP/IP  socket.
+                Socket sender = new Socket(ipAddress.AddressFamily,
+                    SocketType.Stream, ProtocolType.Tcp);
+
+                // Connect the socket to the remote endpoint. Catch any errors.
+                try
+                {
+                    // Connect to Remote EndPoint
+                    sender.Connect(remoteEP);
+
+                    // Encode the data string into a byte array.
+                    byte[] msg = Encoding.UTF8.GetBytes(text);
+
+                    // Send the data through the socket.
+                    int bytesSent = sender.Send(msg);
+
+                    // Receive the response from the remote device.
+                    int bytesRec = sender.Receive(bytes);
+                    result = Encoding.UTF8.GetString(bytes, 0, bytesRec);
+
+                    // Release the socket.
+                    sender.Shutdown(SocketShutdown.Both);
+                    sender.Close();
+                }
+                catch (ArgumentNullException ane)
+                {
+                    MessageBox.Show("ArgumentNullException : {0}", ane.ToString());
+                }
+                catch (SocketException se)
+                {
+                    MessageBox.Show("SocketException : {0}", se.ToString());
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Unexpected exception : {0}", e.ToString());
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            return result;
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string fileName = @"cliet.py" + " " + SearchBox.Text;
-
-            Process p = new Process();
-            p.StartInfo = new ProcessStartInfo("python", fileName)
-            {
-                RedirectStandardOutput = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
-            };
-            p.Start();
-
-            string output = p.StandardOutput.ReadToEnd();
-            p.WaitForExit();
-
-            MessageBox.Show(output);
+            MessageBox.Show(StartClient(SearchBox.Text));
         }
     }
 }
