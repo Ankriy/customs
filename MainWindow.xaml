@@ -60,7 +60,7 @@
 
 
         <StackPanel Grid.Column="0" Margin="0 30 0 30" HorizontalAlignment="Center">
-            <TextBox x:Name="SearchBox" Width="220" Height="25" Style="{StaticResource ModernTextBox}" FontSize="8"/>
+            <TextBox x:Name="SearchBox" Width="220" Height="25" Style="{StaticResource ModernTextBox}" FontSize="10"/>
             <Button Grid.Column="1" Grid.Row="1" Content="Check" Height="20" Width="90" Margin=" 0 3 0 3" Click="Button_Click"/>
             </StackPanel>
 
