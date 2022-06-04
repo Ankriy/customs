@@ -13,9 +13,9 @@
             <GradientStop Color="#FF1D222C"/>
         </LinearGradientBrush>
     </Window.Background>
-    <StackPanel Orientation="Vertical">
-        
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1" MouseDown="ToolBar_MouseDown">
+    <StackPanel Orientation="Vertical" Background="#0F7A65">
+        <Grid Background="#104B52">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1" MouseDown="ToolBar_MouseDown">
         <Image Name="MinButton2" Height="13" Width="13" Margin="5" MouseDown="MinButton_MouseDown">
             <Image.Style>
                 <Style TargetType="{x:Type Image}">
@@ -46,7 +46,9 @@
                 <BlurEffect Radius="1"/>
             </Image.Effect>
         </Image>
-    </StackPanel>
+            
+            </StackPanel>
+        </Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBox Width="200"
                      Height="40"
