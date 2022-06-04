@@ -9,30 +9,22 @@
                             Background="#D9D9D9"
                             Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
 
-                        <Grid>
+                        <Grid >
                             <Rectangle StrokeThickness="1"/>
                             <TextBox Margin="1"
-                                     Text="" 
+                                     Text="{TemplateBinding Text}" 
                                      BorderThickness="0"
                                      Background="Transparent"
                                      VerticalContentAlignment="Center"
                                      Padding="5"
                                      Foreground="#323232"
+                                     FontSize="{TemplateBinding FontSize}"
                                      x:Name="SearchBox">
-                                <!--<TextBox.Style>
-                                    <Style TargetType="{x:Type TextBox}">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding ElementName=SearchBox, Path=Text}" Value="">
-                                                <Setter Property="Text" Value="{Binding ElementName=SearchBox, Path=Text}"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                        <Setter Property="Text" Value="{Binding ElementName=SearchBox, Path=Text}"/>
-                                    </Style>
-                                </TextBox.Style>-->
+                                <!--<Image Source="close.png"/>-->
                             </TextBox>
 
                             <TextBlock IsHitTestVisible="False"
-                                       Text="{TemplateBinding Text}"
+                                       Text="{TemplateBinding Tag}"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Left"
                                        Margin="10,0,0,0"
