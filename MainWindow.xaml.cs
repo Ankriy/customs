@@ -32,9 +32,9 @@ namespace customs
         {
             List<Tables> result = new List<Tables>();
 
-            result.Add(new Tables("0001", "Живая Лошадь", "97%"));
+            //result.Add(new Tables("0001", "Живая Лошадь", "97%"));
 
-            grid.ItemsSource = result;
+            //grid.ItemsSource = result;
 
         }
         private void ExitButton_MouseDown(object sender, MouseButtonEventArgs e)
