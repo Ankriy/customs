@@ -5,16 +5,8 @@ using System.Net;
 using System.Net.Sockets;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace customs
 {
@@ -109,7 +101,8 @@ namespace customs
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string fileName = @"cliet.py" + " " + SearchBox.Text + " "+ "6";
+            
+            string fileName = @"cliet.py" + " \"" + SearchBox.Text.Replace("\"", "") + "\" "+ "6";
 
             Process p = new Process();
             p.StartInfo = new ProcessStartInfo("python", fileName)
@@ -123,9 +116,10 @@ namespace customs
             string output = p.StandardOutput.ReadToEnd();
             p.WaitForExit();
 
-            MessageBox.Show(output);
+            //MessageBox.Show(output);
             result.Clear();
             grid.ItemsSource = null;
+            grid.DataContext = null;
             grid.Items.Refresh();
             output = output.Replace('"', ' ').Replace("{", "").Replace("}", "");
             string[] str = output.Split(',');
@@ -139,15 +133,21 @@ namespace customs
                 string n_str = new string(postStr[1].Where(t => char.IsDigit(t)).ToArray()).Substring(1, 2);
                 string x_str = new string(postStr[0].Where(t => char.IsDigit(t)).ToArray());
                 if (n_str[0] == '0' && n_str[1] == '0')
-                    n_str = "меньше 0%";
+                    n_str = "меньше 0";
                 if (n_str[0] == '0')
-                    n_str = n_str[1] + "%";
+                    n_str = n_str.Substring(1) ;
 
+                while (x_str.Length < 4)
+                    x_str = "0" + x_str;
 
-
-                result.Add(new Tables(new string(postStr[0].Where(t => char.IsDigit(t)).ToArray()), "", n_str));
+                result.Add(new Tables(new string(postStr[0].Where(t => char.IsDigit(t)).ToArray()), "", n_str + "%"));
             }
             grid.ItemsSource = result;
+        }
+
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            //File
         }
     }
 }
