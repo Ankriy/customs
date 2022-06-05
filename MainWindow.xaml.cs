@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
+using Microsoft.Win32;
 
 namespace customs
 {
@@ -147,7 +148,10 @@ namespace customs
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            //File
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.ShowDialog();
+            string filename = ofd.FileName;
+            string[] fileText = System.IO.File.ReadAllLines(filename);
         }
     }
 }
