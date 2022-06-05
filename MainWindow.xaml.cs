@@ -23,6 +23,7 @@ namespace customs
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<Tables> result = new List<Tables>();
         public MainWindow()
         {
             InitializeComponent();
@@ -123,9 +124,10 @@ namespace customs
             p.WaitForExit();
 
             MessageBox.Show(output);
-
+            result.Clear();
+            grid.ItemsSource = null;
+            grid.Items.Refresh();
             output = output.Replace('"', ' ').Replace("{", "").Replace("}", "");
-            MessageBox.Show(output);
             string[] str = output.Split(',');
             
             string[] postStr;
@@ -134,8 +136,18 @@ namespace customs
             {
                 
                 postStr = str[i].Split(':');
-                str[i] = new string(postStr[0].Where(t => char.IsDigit(t)).ToArray()).Substring(0, 4);
+                string n_str = new string(postStr[1].Where(t => char.IsDigit(t)).ToArray()).Substring(1, 2);
+                string x_str = new string(postStr[0].Where(t => char.IsDigit(t)).ToArray());
+                if (n_str[0] == '0' && n_str[1] == '0')
+                    n_str = "меньше 0%";
+                if (n_str[0] == '0')
+                    n_str = n_str[1] + "%";
+
+
+
+                result.Add(new Tables(new string(postStr[0].Where(t => char.IsDigit(t)).ToArray()), "", n_str));
             }
+            grid.ItemsSource = result;
         }
     }
 }
