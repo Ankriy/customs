@@ -108,7 +108,7 @@ namespace customs
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string fileName = @"cliet.py" + " " + SearchBox.Text;
+            string fileName = @"cliet.py" + " " + SearchBox.Text + " "+ "6";
 
             Process p = new Process();
             p.StartInfo = new ProcessStartInfo("python", fileName)
@@ -123,6 +123,19 @@ namespace customs
             p.WaitForExit();
 
             MessageBox.Show(output);
+
+            output = output.Replace('"', ' ').Replace("{", "").Replace("}", "");
+            MessageBox.Show(output);
+            string[] str = output.Split(',');
+            
+            string[] postStr;
+            
+            for(int i=0; i < str.Length; i++)
+            {
+                
+                postStr = str[i].Split(':');
+                str[i] = new string(postStr[0].Where(t => char.IsDigit(t)).ToArray()).Substring(0, 4);
+            }
         }
     }
 }
