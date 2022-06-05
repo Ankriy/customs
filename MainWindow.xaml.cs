@@ -151,7 +151,12 @@ namespace customs
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.ShowDialog();
             string filename = ofd.FileName;
-            string[] fileText = System.IO.File.ReadAllLines(filename);
+            string[] fileText;
+            if (!(filename == ""))
+                fileText = System.IO.File.ReadAllLines(filename);
+            else
+                MessageBox.Show("Не получилось прочитать файл");
+
         }
     }
 }
