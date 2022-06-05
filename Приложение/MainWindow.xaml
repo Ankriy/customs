@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:customs"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="955" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Window.Background>
@@ -57,20 +56,18 @@
 
 
         <StackPanel Grid.Column="0" Margin="0 30 0 30" HorizontalAlignment="Center" Orientation="Horizontal">
-            <TextBox x:Name="SearchBox" Width="655" Height="46" 
+            <TextBox x:Name="SearchBox" Width="591" Height="46" 
                      Style="{StaticResource ModernTextBox}" FontSize="19" 
-                     Margin="0 0 10 0" Tag="Введите ключевые слова"/>
+                     Margin="0 0 10 0" Tag="Введите ключевые слова" KeyDown="SearchBox_KeyDown"/>
             <Button Grid.Column="1" Grid.Row="1" Content="Check" Height="46" Width="168" Margin="0 0 10 0" Click="Button_Click"/>
             <Image Source="Images/icontxtbx.png" Width="46" Height="46" MouseDown="Image_MouseDown"/>
+            <Button x:Name="Export" Content="Export" Background="#FFD5D2F3" Click="Export_Click"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" HorizontalAlignment="Center">
-                <Label Foreground="White" FontSize="16">Идентификационные номера:</Label>
-                <DataGrid x:Name="grid" Loaded="grid_Loaded" Width="901" Height="392">
-                    
-                </DataGrid>
-            </StackPanel>
-        
-        
+            <Label Foreground="White" FontSize="16" Height="42">Идентификационные номера:</Label>
+            <DataGrid x:Name="grid" Loaded="grid_Loaded" Width="901" Height="392">
+            </DataGrid>
+        </StackPanel>
     </StackPanel>
 </Window>
